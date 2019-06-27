@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="demo" id="demo"><span></span>
+        qddd
+        <span></span>
+
+    </div>
+    <script>
+        // window.addEventListener("storage", function (e) {
+        //     alert(e.newValue);
+        // });
+        function print(){
+            console.log('open me!');
+        }
+        document.getElementById('demo').onclick= function(e){
+            window.open('./about.html');
+        }
+        function addLoadFunc(fn){
+            var oldLoadFn = window.onload;
+            if(typeof window.onload !== 'function'){
+                window.onload = fn;
+            }else{
+                window.onload = function(){
+                    oldLoadFn();
+                    fn();
+                }
+            }
+        }
+        // addLoadFunc(fn1);
+        // addLoadFunc(fn2);
+        function fn1(){alert(1)}
+        function fn2(){alert(2)}
+
+
+        function insertAfter(newEl, targetEl) {
+            let parent = targetEl.parentNode;
+            if(parent.lastChild === targetEl) {
+                parent.appendChild(newEl);
+            }else {
+                parent.insertBefore(newEl, targetEl.nextSibling)
+            }
+        }
+        var demo = document.getElementById('demo');
+        console.log(demo.lastChild.nodeName, demo.firstChild, demo.parentNode);
+    </script>
+</body>
+</html>
